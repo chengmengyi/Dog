@@ -15,6 +15,7 @@ class ChooseServer0907Ac:Abs0907Ac() {
     }
 
     override fun view() {
+        immersionBar?.statusBarView(top)?.init()
         iv_finish.setOnClickListener { finish() }
 
         val list= arrayListOf<Ss0807ServerData>()

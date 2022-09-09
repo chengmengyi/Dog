@@ -66,12 +66,18 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
                 startActivityForResult(Intent(this,ChooseServer0907Ac::class.java),907)
             }
         }
+
         iv_connect_btn.setOnClickListener {
             if (can0907Click){
                 val serverConnected = Ss0907ConnectMa.serverConnected()
                 connectOrDisconnect(!serverConnected)
             }
         }
+
+        connect_idle.setOnClickListener {
+            iv_connect_btn.performClick()
+        }
+
         llc_contact.setOnClickListener {
             if (can0907Click){
                 contact()
@@ -207,6 +213,7 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
         connecting_view.show(false)
         iv_connect_status.setImageResource(R.drawable.connect_btn_icon)
         iv_connect_btn.setImageResource(R.drawable.connect_bg)
+        connect_idle.setImageResource(R.drawable.connect_idle)
     }
 
     override fun updateConnectingUI() {
@@ -215,6 +222,7 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
         connecting_view.show(true)
         iv_connect_btn.setImageResource(R.drawable.connect_bg)
         iv_connect_status.setImageResource(R.drawable.connect_btn_icon)
+        connect_idle.setImageResource(R.drawable.connect_idle)
     }
 
     override fun updateConnectedUI() {
@@ -223,6 +231,7 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
         connecting_view.show(false)
         iv_connect_btn.setImageResource(R.drawable.connected_bg)
         iv_connect_status.setImageResource(R.drawable.connected_btn_icon)
+        connect_idle.setImageResource(R.drawable.connected)
     }
 
     override fun serverConnected() {

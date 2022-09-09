@@ -61,6 +61,8 @@ fun Context.show0907Toast(text:String){
 }
 
 fun getServerIcon(c:String)=when(c){
+    "Japan"->R.drawable.japan
+    "UnitedStates"->R.drawable.unitedstates
     else -> R.drawable.fast
 }
 

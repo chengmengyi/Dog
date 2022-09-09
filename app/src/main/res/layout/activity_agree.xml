@@ -31,6 +31,7 @@
         app:layout_constraintTop_toTopOf="@id/iv_finish"
         app:layout_constraintBottom_toBottomOf="@id/iv_finish"/>
     <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"

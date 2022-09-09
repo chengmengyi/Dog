@@ -1,5 +1,6 @@
 package com.demo.dog
 
+import com.demo.dog.ss0907server.Ss0907LocalInfo
 import kotlinx.android.synthetic.main.activity_agree.*
 
 class Agree0907Ac:Abs0907Ac() {
@@ -10,5 +11,10 @@ class Agree0907Ac:Abs0907Ac() {
     override fun view() {
         immersionBar?.statusBarView(top)?.init()
         iv_finish.setOnClickListener { finish() }
+
+        webview.apply {
+            settings.javaScriptEnabled=true
+            loadUrl(Ss0907LocalInfo.AGREE_STR)
+        }
     }
 }

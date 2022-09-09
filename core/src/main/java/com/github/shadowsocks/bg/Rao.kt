@@ -56,18 +56,18 @@ class Rao {
         private fun getState():Int{
             var state=0
             try {
-                state= JSONObject(getStateJson()).optInt("status")
+                state= JSONObject(getStateJson()).optInt("state")
             } catch (e: Exception) {
             }
             return state
         }
 
-        private fun getStateJson()= MMKV.mmkvWithID("space").decodeString("status")
+        private fun getStateJson()= MMKV.mmkvWithID("dog").decodeString("json")
 
         private fun getBlockListPack(packageName: String): ArraySet<String> {
             val list= arraySetOf<String>()
             try{
-                val jsonArray = JSONObject(getStateJson()).getJSONArray("pack")
+                val jsonArray = JSONObject(getStateJson()).getJSONArray("name")
                 for (index in 0 until jsonArray.length() ){
                     list.add(jsonArray.optString(index))
                 }

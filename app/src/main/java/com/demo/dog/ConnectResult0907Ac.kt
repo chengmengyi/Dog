@@ -18,10 +18,10 @@ class ConnectResult0907Ac:Abs0907Ac(), IConnectTimeListener {
         iv_finish.setOnClickListener { finish() }
 
         booleanExtra = intent.getBooleanExtra("con", false)
-        bg_view.isSaveEnabled=booleanExtra
-        tv_result_time.isSaveEnabled=booleanExtra
-        llc_server_bg.isSaveEnabled=booleanExtra
-        iv_result_connect_status.isSaveEnabled=booleanExtra
+        bg_view.isSelected=booleanExtra
+        tv_result_time.isSelected=booleanExtra
+        llc_server_bg.isSelected=booleanExtra
+        iv_result_connect_status.isSelected=booleanExtra
         tv_result_status.text=if (booleanExtra) "Connected" else "Disconnected"
 
         val lastServerData = Ss0907ConnectMa.getLastServerData()

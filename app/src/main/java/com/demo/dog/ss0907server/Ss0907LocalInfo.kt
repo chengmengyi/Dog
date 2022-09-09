@@ -26,12 +26,32 @@ class Ss0907LocalInfo {
             )
         )
 
+//        val localServerList= arrayListOf(
+//            Ss0807ServerData(
+//                dog_0907_host = "185.172.113.78",
+//                dog_0907_pwd = "l40ofbwPpFwKCWBdXP4E",
+//                dog_0907_country = "Japan",
+//                dog_0907_city = "Tokyo",
+//                dog_0907_port = 2828,
+//                dog_0907_method = "chacha20-ietf-poly1305"
+//            ),
+//            Ss0807ServerData(
+//                dog_0907_host = "79.133.124.170",
+//                dog_0907_pwd = "l40ofbwPpFwKCWBdXP4E",
+//                dog_0907_country = "UnitedStates",
+//                dog_0907_city = "Chicago",
+//                dog_0907_port = 2828,
+//                dog_0907_method = "chacha20-ietf-poly1305"
+//            )
+//        )
+
+
 
 
         const val RAO_JSON="""{
     "state":1,
     "name":[
-        "com.UCMobile"
+   
     ]
 }"""
     }

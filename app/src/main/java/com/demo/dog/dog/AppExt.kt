@@ -6,12 +6,14 @@ import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.demo.dog.R
 import com.demo.dog.ss0907server.Ss0907LocalInfo
 import java.lang.Exception
+import kotlin.math.log
 
 
 fun Context.height(){
@@ -97,4 +99,9 @@ fun Context.update() {
         )
     }
     startActivity(intent)
+}
+
+
+fun log0907(string: String){
+    Log.e("qwer",string)
 }

@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.blankj.utilcode.util.ActivityUtils
 import com.demo.dog.Connect0907Ac
 import com.demo.dog.MainActivity
+import com.google.android.gms.ads.AdActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -66,7 +67,7 @@ object Ac0907Life {
                 delay(3000L)
                 startMain=true
                     ActivityUtils.finishActivity(MainActivity::class.java)
-//                    ActivityUtils.finishActivity(AdActivity::class.java)
+                    ActivityUtils.finishActivity(AdActivity::class.java)
             }
         }
 

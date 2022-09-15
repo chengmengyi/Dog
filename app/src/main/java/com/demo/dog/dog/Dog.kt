@@ -7,9 +7,12 @@ import com.demo.dog.ss0907server.SsServer0907Ma
 import com.github.shadowsocks.Core
 import com.tencent.mmkv.MMKV
 
+
+lateinit var mDog: Dog
 class Dog:Application() {
     override fun onCreate() {
         super.onCreate()
+        mDog=this
         Core.init(this,Connect0907Ac::class)
         MMKV.initialize(this)
         if (!packageName.equals(name(this))){

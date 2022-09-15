@@ -2,12 +2,16 @@ package com.demo.dog
 
 import com.demo.dog.dog.getServerIcon
 import com.demo.dog.interfaces.IConnectTimeListener
+import com.demo.dog.load_admob.Ss0907AdType
+import com.demo.dog.show_ad.SsCheck0907NativeAd
 import com.demo.dog.ss0907server.Ss0907ConnectMa
 import com.demo.dog.ss0907server.Ss0907TimeMa
 import kotlinx.android.synthetic.main.activity_connect_result.*
 
 class ConnectResult0907Ac:Abs0907Ac(), IConnectTimeListener {
     private var booleanExtra=false
+    private val resultAd by lazy { SsCheck0907NativeAd(this, Ss0907AdType.AD_RESULT) }
+
 
     override fun layout(): Int {
         return R.layout.activity_connect_result
@@ -35,12 +39,18 @@ class ConnectResult0907Ac:Abs0907Ac(), IConnectTimeListener {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        resultAd.loop()
+    }
+
     override fun updateConnectTime(time: String) {
         tv_result_time.text=time
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        resultAd.stopJob()
         if (booleanExtra){
             Ss0907TimeMa.setListener(null)
         }

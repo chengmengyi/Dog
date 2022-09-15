@@ -93,10 +93,11 @@
         app:layout_constraintLeft_toLeftOf="@id/iv_connect_btn"
         app:layout_constraintRight_toRightOf="@id/iv_connect_btn"
         app:layout_constraintBottom_toBottomOf="@id/iv_connect_btn"/>
-    <View
+    <include
         android:id="@+id/bottom_ad"
         android:layout_width="match_parent"
         android:layout_height="243dp"
         android:layout_margin="14dp"
+        layout="@layout/layout_native_ad"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

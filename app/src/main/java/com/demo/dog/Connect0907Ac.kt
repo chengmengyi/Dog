@@ -8,6 +8,10 @@ import android.util.Log
 import com.demo.dog.dog.*
 import com.demo.dog.interfaces.IConnectStateListener
 import com.demo.dog.interfaces.IUpdateConnectUI
+import com.demo.dog.load_admob.Ss0907AdType
+import com.demo.dog.load_admob.Ss0907LoadAdmob
+import com.demo.dog.show_ad.SsCheck0907NativeAd
+import com.demo.dog.show_ad.SsShow0907OpenAd
 import com.demo.dog.ss0907server.Ss0907ConnectMa
 import com.demo.dog.ss0907server.Ss0907TimeMa
 import com.github.shadowsocks.Core
@@ -26,6 +30,9 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
     private var connect=false
     private var connectSuccessJob:Job?=null
     private var objectAnimator: ObjectAnimator?=null
+
+    private val homeAd by lazy { SsCheck0907NativeAd(this,Ss0907AdType.AD_HOME) }
+    private val connectAd by lazy { SsShow0907OpenAd(this, Ss0907AdType.AD_CONNECT){jumpResult()} }
 
 
     private val register0907ForActivityResult = registerForActivityResult(StartService()) {
@@ -102,6 +109,9 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
 
     private fun connectOrDisconnect(connect:Boolean){
         can0907Click=false
+        Ss0907LoadAdmob.callLogic(Ss0907AdType.AD_CONNECT)
+        Ss0907LoadAdmob.callLogic(Ss0907AdType.AD_RESULT)
+
         if (connect){
             preConnectServer()
         }else{
@@ -113,6 +123,7 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
 
     private fun preConnectServer(){
         if (showNoNetDialog()){
+            can0907Click=true
             return
         }
         if (VpnService.prepare(this) != null) {
@@ -157,9 +168,11 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
                     result()
                 }
                 val bool=if (connect) Ss0907ConnectMa.serverConnected() else Ss0907ConnectMa.serverStopped()
-                if (bool){
+                val adResData = Ss0907LoadAdmob.getAdResData(Ss0907AdType.AD_CONNECT)
+                if (bool&&null!=adResData){
+                    result(jumpRsult = false)
+                    connectAd.ss0907show()
                     cancel()
-                    result()
                 }
             }
         }
@@ -253,10 +266,19 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (Ac0907Life.updateHomeNativeAd){
+            homeAd.loop()
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         stopRotateIcon()
         connectSuccessJob?.cancel()
+        Ac0907Life.updateHomeNativeAd=true
+        homeAd.stopJob()
         Ss0907ConnectMa.onDestroy()
     }
 }

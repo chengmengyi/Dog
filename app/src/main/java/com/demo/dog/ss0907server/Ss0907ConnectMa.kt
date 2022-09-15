@@ -1,9 +1,8 @@
 package com.demo.dog.ss0907server
 
 import com.demo.dog.Abs0907Ac
-import com.demo.dog.Connect0907Ac
 import com.demo.dog.interfaces.IConnectStateListener
-import com.demo.dog.ss0907bean.Ss0807ServerData
+import com.demo.dog.ss0907bean.Ss0907ServerData
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.aidl.IShadowsocksService
 import com.github.shadowsocks.aidl.ShadowsocksConnection
@@ -27,7 +26,7 @@ object Ss0907ConnectMa:ShadowsocksConnection.Callback {
         shadowsocksConnection.connect(context,this)
     }
 
-    fun setCurrentServerData(ss0807ServerData: Ss0807ServerData){
+    fun setCurrentServerData(ss0807ServerData: Ss0907ServerData){
         this.currentServerData=ss0807ServerData
     }
 

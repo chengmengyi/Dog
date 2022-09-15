@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.demo.dog.R
 import com.demo.dog.dog.getServerIcon
 import com.demo.dog.dog.show
-import com.demo.dog.ss0907bean.Ss0807ServerData
+import com.demo.dog.ss0907bean.Ss0907ServerData
 import com.demo.dog.ss0907server.Ss0907ConnectMa
 import kotlinx.android.synthetic.main.layout_choose_server_item.view.*
 
 class ChooseServer0907Adapter (
     private val context: Context,
-    private val list:ArrayList<Ss0807ServerData>,
-    private val click:(data:Ss0807ServerData)->Unit
+    private val list:ArrayList<Ss0907ServerData>,
+    private val click:(data:Ss0907ServerData)->Unit
         ):RecyclerView.Adapter<ChooseServer0907Adapter.ChooseServerView>() {
 
     inner class ChooseServerView(view:View):RecyclerView.ViewHolder(view){

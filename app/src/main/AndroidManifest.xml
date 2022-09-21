@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.demo.dog">
+    package="com.dog.dog">
 
     <application
-        android:name=".dog.Dog"
+        android:name="com.dog.dog.dog.Dog"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dog">
         <activity
-            android:name=".MainActivity"
+            android:name="com.dog.dog.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -20,18 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Connect0907Ac"
+        <activity android:name="com.dog.dog.Connect0907Ac"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ChooseServer0907Ac"
+        <activity android:name="com.dog.dog.ChooseServer0907Ac"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ConnectResult0907Ac"
+        <activity android:name="com.dog.dog.ConnectResult0907Ac"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Agree0907Ac"
+        <activity android:name="com.dog.dog.Agree0907Ac"
             android:screenOrientation="portrait"/>
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_id" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
 
 </manifest>

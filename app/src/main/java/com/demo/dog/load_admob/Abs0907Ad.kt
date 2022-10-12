@@ -114,6 +114,11 @@ abstract class Abs0907Ad {
                             super.onAdFailedToLoad(p0)
                             result.invoke(Ss0907AdRes(failMsg = p0.message))
                         }
+
+                        override fun onAdClicked() {
+                            super.onAdClicked()
+                            SsServer0907Ma.addClickNum()
+                        }
                     })
                     .withNativeAdOptions(
                         NativeAdOptions.Builder()

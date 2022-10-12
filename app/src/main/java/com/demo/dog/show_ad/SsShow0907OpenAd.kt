@@ -4,6 +4,7 @@ import com.demo.dog.Abs0907Ac
 import com.demo.dog.dog.log0907
 import com.demo.dog.load_admob.Ss0907AdType
 import com.demo.dog.load_admob.Ss0907LoadAdmob
+import com.demo.dog.ss0907server.SsServer0907Ma
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.appopen.AppOpenAd
@@ -19,14 +20,20 @@ class SsShow0907OpenAd(
     private val result:()->Unit
 ) {
 
-    fun ss0907show(){
-        if (Ss0907LoadAdmob.showing0907Open||!abs0907Ac.resume()){
-            log0907("cannot show $adType ad, ${Ss0907LoadAdmob.showing0907Open}...${abs0907Ac.resume()}")
+    fun ss0907show(show:(jump:Boolean)->Unit){
+        val adResData = Ss0907LoadAdmob.getAdResData(adType)
+        if (SsServer0907Ma.cannotLoadAd()&&null==adResData){
+            show.invoke(true)
             return
         }
-        val adResData = Ss0907LoadAdmob.getAdResData(adType)
         if (null!=adResData){
+            if (Ss0907LoadAdmob.showing0907Open||!abs0907Ac.resume()){
+                log0907("cannot show $adType ad, ${Ss0907LoadAdmob.showing0907Open}...${abs0907Ac.resume()}....")
+                show.invoke(false)
+                return
+            }
             log0907("start show $adType ")
+            show.invoke(false)
             Ss0907LoadAdmob.showing0907Open=true
             if (adResData is AppOpenAd){
                 showOpenAd(adResData)
@@ -50,12 +57,14 @@ class SsShow0907OpenAd(
     private val callback=object : FullScreenContentCallback() {
         override fun onAdDismissedFullScreenContent() {
             super.onAdDismissedFullScreenContent()
+            log0907("==onAdDismissedFullScreenContent===")
             Ss0907LoadAdmob.showing0907Open=false
             showFinish()
         }
 
         override fun onAdShowedFullScreenContent() {
             super.onAdShowedFullScreenContent()
+            SsServer0907Ma.addShowNum()
             Ss0907LoadAdmob.showing0907Open=true
             Ss0907LoadAdmob.deleteAdRes(adType)
         }
@@ -65,6 +74,11 @@ class SsShow0907OpenAd(
             Ss0907LoadAdmob.showing0907Open=false
             Ss0907LoadAdmob.deleteAdRes(adType)
             showFinish()
+        }
+
+        override fun onAdClicked() {
+            super.onAdClicked()
+            SsServer0907Ma.addClickNum()
         }
     }
 

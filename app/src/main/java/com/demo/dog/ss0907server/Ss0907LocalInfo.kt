@@ -35,6 +35,8 @@ class Ss0907LocalInfo {
 
 
         const val dog0907_AD="""{
+    "dog0907_click":15,
+    "dog0907_show":50,
     "dog0907_open": [
         {
             "dog0907_source": "admob",
@@ -44,7 +46,7 @@ class Ss0907LocalInfo {
         },
         {
             "dog0907_source": "admob",
-            "dog0907_id": "ca-app-pub-3940256099942544/3419835294A",
+            "dog0907_id": "ca-app-pub-3940256099942544/3419835294",
             "dog0907_type": "kaiping",
             "dog0907_sort": 2
         },
@@ -78,7 +80,7 @@ class Ss0907LocalInfo {
     "dog0907_result": [
         {
             "dog0907_source": "admob",
-            "dog0907_id": "ca-app-pub-3940256099942544/2247696110A",
+            "dog0907_id": "ca-app-pub-3940256099942544/2247696110",
             "dog0907_type": "yuansheng",
             "dog0907_sort": 2
         },
@@ -90,7 +92,7 @@ class Ss0907LocalInfo {
         },
         {
             "dog0907_source": "admob",
-            "dog0907_id": "ca-app-pub-3940256099942544/2247696110AA",
+            "dog0907_id": "ca-app-pub-3940256099942544/2247696110A",
             "dog0907_type": "yuansheng",
             "dog0907_sort": 3
         }
@@ -98,7 +100,7 @@ class Ss0907LocalInfo {
     "dog0907_connect": [
         {
             "dog0907_source": "admob",
-            "dog0907_id": "ca-app-pub-3940256099942544/8691691433A",
+            "dog0907_id": "ca-app-pub-3940256099942544/1033173712",
             "dog0907_type": "chaping",
             "dog0907_sort": 2
         },

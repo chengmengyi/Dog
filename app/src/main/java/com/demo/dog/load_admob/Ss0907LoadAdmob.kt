@@ -2,13 +2,19 @@ package com.demo.dog.load_admob
 
 import com.demo.dog.dog.log0907
 import com.demo.dog.ss0907bean.Ss0907AdData
+import com.demo.dog.ss0907server.SsServer0907Ma
 
 object Ss0907LoadAdmob:Abs0907Ad(){
     fun callLogic(adType:String,again:Boolean=true){
+
         if (checkLoading(adType)) return
 
         if (checkHadRes(adType)) return
 
+        if (SsServer0907Ma.cannotLoadAd()){
+            log0907("num max")
+            return
+        }
         val parseAdList = parseAdList(adType)
         if (parseAdList.isNullOrEmpty()){
             log0907("$adType ad list null")

@@ -13,7 +13,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : Abs0907Ac() {
     private var animator: ValueAnimator?=null
-    private val show by lazy { SsShow0907OpenAd(this,Ss0907AdType.AD_OPEN){toNextAc()} }
+    private val show by lazy { SsShow0907OpenAd(this,Ss0907AdType.AD_OPEN){
+        stopAnimator()
+        toNextAc()
+    } }
 
     override fun layout(): Int {
         return R.layout.activity_main
@@ -33,10 +36,12 @@ class MainActivity : Abs0907Ac() {
                 main_progress.progress = progress
                 val duration = (10 * (progress / 100.0F)).toInt()
                 if (duration in 2..9){
-                    if (null!=Ss0907LoadAdmob.getAdResData(Ss0907AdType.AD_OPEN)){
+                    show.ss0907show{
                         stopAnimator()
                         main_progress.progress = 100
-                        show.ss0907show()
+                        if (it){
+                            toNextAc()
+                        }
                     }
                 }else if (duration>=10){
                     toNextAc()

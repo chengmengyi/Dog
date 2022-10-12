@@ -15,6 +15,7 @@ import com.demo.dog.dog.log0907
 import com.demo.dog.dog.show
 import com.demo.dog.load_admob.Ss0907AdType
 import com.demo.dog.load_admob.Ss0907LoadAdmob
+import com.demo.dog.ss0907server.SsServer0907Ma
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdView
 import kotlinx.coroutines.*
@@ -89,6 +90,7 @@ class SsCheck0907NativeAd(
         (native_ad_view.callToActionView as AppCompatTextView).text=ad.callToAction
 
         native_ad_view.setNativeAd(ad)
+        SsServer0907Ma.addShowNum()
 
         abs0907Ac.findViewById<AppCompatImageView>(R.id.iv_cover).show(false)
 

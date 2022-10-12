@@ -32,7 +32,10 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
     private var objectAnimator: ObjectAnimator?=null
 
     private val homeAd by lazy { SsCheck0907NativeAd(this,Ss0907AdType.AD_HOME) }
-    private val connectAd by lazy { SsShow0907OpenAd(this, Ss0907AdType.AD_CONNECT){jumpResult()} }
+    private val connectAd by lazy { SsShow0907OpenAd(this, Ss0907AdType.AD_CONNECT){
+        connectSuccessJob?.cancel()
+        jumpResult()
+    } }
 
 
     private val register0907ForActivityResult = registerForActivityResult(StartService()) {
@@ -167,12 +170,14 @@ class Connect0907Ac:Abs0907Ac(),IUpdateConnectUI, IConnectStateListener {
                     cancel()
                     result()
                 }
-                val bool=if (connect) Ss0907ConnectMa.serverConnected() else Ss0907ConnectMa.serverStopped()
-                val adResData = Ss0907LoadAdmob.getAdResData(Ss0907AdType.AD_CONNECT)
-                if (bool&&null!=adResData){
-                    result(jumpRsult = false)
-                    connectAd.ss0907show()
-                    cancel()
+                if (time in 2..9){
+                    val bool=if (connect) Ss0907ConnectMa.serverConnected() else Ss0907ConnectMa.serverStopped()
+                    if (bool){
+                        connectAd.ss0907show{
+                            cancel()
+                            result(jumpRsult = it)
+                        }
+                    }
                 }
             }
         }

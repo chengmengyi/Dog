@@ -71,7 +71,7 @@ class ChooseServer0907Ac:Abs0907Ac() {
     override fun onBackPressed() {
         val adResData = Ss0907LoadAdmob.getAdResData(Ss0907AdType.AD_BACK)
         if (null!=adResData){
-            backAd.ss0907show()
+            backAd.ss0907show{}
             return
         }
         finish()
